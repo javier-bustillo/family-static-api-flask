@@ -49,6 +49,26 @@ def get_member(member_id):
     return jsonify(member), 200
 
 
+@app.route('/member>', methods=['POST'])
+def post_member():
+
+    # this is how you can use the Family datastructure by calling its methods
+    body_name = request.json.get("first_name")
+    body_age = request.json.get("age")
+    body_id = request.json.get("id")
+    body_lucky_numbers = request.json.get("lucky_numbers")
+
+    member = {
+
+    }
+
+    response_body = {
+
+        "family": member
+    }
+    return jsonify(member), 200
+
+
 # this only runs if `$ python src/app.py` is executed
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))
