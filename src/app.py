@@ -37,6 +37,18 @@ def get_all_members():
     return jsonify(response_body), 200
 
 
+@app.route('/member/<int:member_id>', methods=['GET'])
+def get_member(member_id):
+
+    # this is how you can use the Family datastructure by calling its methods
+    member = jackson_family.get_member(member_id)
+    response_body = {
+
+        "family": member
+    }
+    return jsonify(member), 200
+
+
 # this only runs if `$ python src/app.py` is executed
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))
