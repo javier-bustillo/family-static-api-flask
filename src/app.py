@@ -68,14 +68,14 @@ def add_new_member():
 
     members = jackson_family.add_member(member)
 
-    return jsonify(None), 200
+    return jsonify("A new family member is born"), 200
 
 
 @app.route('/member/<int:member_id>', methods=['DELETE'])
 def delete_member(member_id):
     members = jackson_family.delete_member(member_id)
 
-    return jsonify({"done": True}), 200
+    return jsonify("Family member said goodbye"), 200
 
 
 # this only runs if `$ python src/app.py` is executed
