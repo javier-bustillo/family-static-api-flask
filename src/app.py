@@ -50,23 +50,25 @@ def get_member(member_id):
 
 
 @app.route('/member>', methods=['POST'])
-def post_member():
+def add_new_member():
 
     # this is how you can use the Family datastructure by calling its methods
+
     body_name = request.json.get("first_name")
     body_age = request.json.get("age")
     body_id = request.json.get("id")
     body_lucky_numbers = request.json.get("lucky_numbers")
 
     member = {
-
+        "id": body_id or jackson_family._generateId(),
+        "first_name": body_name,
+        "age": body_age,
+        "lucky_numbers": body_lucky_numbers
     }
 
-    response_body = {
+    members = jackson_family.add_member(member)
 
-        "family": member
-    }
-    return jsonify(member), 200
+    return jsonify(None), 200
 
 
 # this only runs if `$ python src/app.py` is executed
