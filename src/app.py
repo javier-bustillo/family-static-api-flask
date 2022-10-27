@@ -75,7 +75,7 @@ def add_new_member():
 def delete_member(member_id):
     members = jackson_family.delete_member(member_id)
 
-    return jsonify("Family member said goodbye"), 200
+    return jsonify({"done": True}), 200
 
 
 # this only runs if `$ python src/app.py` is executed
